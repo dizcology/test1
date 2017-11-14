@@ -4,34 +4,25 @@
    :alt: Google Cloud Platform logo
    :align: right
 
-`Google Cloud Storage: Node.js Client <https://github.com/googleapis/nodejs-storage>`__  |logo|
-======================================================================================= 
-|logo|
-
-here |logo|
-
-.. |logo| image:: https://avatars2.githubusercontent.com/u/2810941?v=3&s=96
-   :height: 96px
-   :width: 96px
-   :alt: Google Cloud Platform logo
-   :align: bottom
+`{{name}}: {{display}} Client <https://github.com{{repoPath}}>`__
+=========================================================================
 
 |release level| |CircleCI| |AppVeyor| |codecov|
 
-    Node.js idiomatic client for `Cloud
-    Storage <https://cloud.google.com/storage/docs>`__.
+    {{display}} idiomatic client for
+    `{{short_name}} <{{docs_url}}>`__.
 
-`Cloud Storage <https://cloud.google.com/storage/docs>`__ allows
-world-wide storage and retrieval of any amount of data at any time. You
-can use Google Cloud Storage for a range of scenarios including serving
-website content, storing data for archival and disaster recovery, or
-distributing large data objects to users via direct download.
+{{description}}
 
--  `Cloud Storage Node.js Client API
-   Reference <https://cloud.google.com/nodejs/docs/reference/storage/latest/>`__
--  `github.com/googleapis/nodejs-storage <https://github.com/googleapis/nodejs-storage>`__
--  `Cloud Storage
-   Documentation <https://cloud.google.com/storage/docs>`__
+{% if deprecated %} 
+\| :warning: Deprecated Module \| 
+\| — \| 
+\| This library is **deprecated**. {{deprecated}} \| 
+{% endif %}
+
+-  `{{short_name}} {{display}} Client API Reference <{{client_reference_url}}>`__
+-  `github.com{{repoPath}} <https://github.com{{repoPath}}>`__
+-  `{{short_name}} Documentation <{{docs_url}}>`__
 
 Read more about the client libraries for Cloud APIs, including the older
 Google APIs Client Libraries, in `Client Libraries
@@ -43,9 +34,12 @@ Explained <https://cloud.google.com/apis/docs/client-libraries-explained>`__.
 
    -  `Before you begin <#before-you-begin>`__
    -  `Installing the client library <#installing-the-client-library>`__
-   -  `Using the client library <#using-the-client-library>`__
+   -  `Using the client library <#using-the-client-library>`__ 
 
--  `Samples <#samples>`__
+{{#if samples.length}}
+-  `Samples <#samples>`__ 
+{{/if}}
+
 -  `Versioning <#versioning>`__
 -  `Contributing <#contributing>`__
 -  `License <#license>`__
@@ -58,126 +52,99 @@ Before you begin
 
 1. Select or create a Cloud Platform project.
 
-   `Go to the projects
-   page <https://console.cloud.google.com/project>`__
+  `Go to the projects page`_
 
-2. Enable billing for your project.
+{{#unless suppress_billing}}
+1. Enable billing for your project.
 
-   `Enable
-   billing <https://support.google.com/cloud/answer/6293499#enable-billing>`__
+  `Enable billing`_
+{{/if}}
 
-3. Enable the Google Cloud Storage API.
+{{#if api_id}} 1. Enable the {{name}} API.
 
-   `Enable the
-   API <https://console.cloud.google.com/flows/enableapi?apiid=storage-api.googleapis.com>`__
+  `Enable the API`_
+{{/if}}
 
-4. `Set up authentication with a service
-   account <https://cloud.google.com/docs/authentication/getting-started>`__
-   so you can access the API from your local workstation.
+1. [Set up authentication with a service account][auth] so you
+can access the API from your local workstation.
+
+{{#unless suppress_billing}} [billing]:
+https://support.google.com/cloud/answer/6293499#enable-billing
+{{/unless}} [enable_api]:
+https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}
+[auth]: https://cloud.google.com/docs/authentication/getting-started
+
+.. _Go to the projects page:
+.. _projects: https://console.cloud.google.com/project
+
+{{#unless suppress_billing}}
+.. _Enable billing:
+.. _billing: https://support.google.com/cloud/answer/6293499#enable-billing
+{{/unless}}
+
+.. _Enable the API:
+.. _enable_api: https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}
+
+[auth]: https://cloud.google.com/docs/authentication/getting-started
 
 Installing the client library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    npm install --save @google-cloud/storage
+    {{lib_install_cmd}}
 
-Using the client library
-~~~~~~~~~~~~~~~~~~~~~~~~
+{{#if quickstart}} ### Using the client library
 
-.. code:: javascript
+.. code:: {{syntax_highlighting_ext}}
 
-    // Imports the Google Cloud client library
-    const Storage = require('@google-cloud/storage');
+    {{{quickstart}}}
 
-    // Your Google Cloud Platform project ID
-    const projectId = 'YOUR_PROJECT_ID';
+{{/if}}
 
-    // Creates a client
-    const storage = new Storage({
-      projectId: projectId,
-    });
-
-    // The name for the new bucket
-    const bucketName = 'my-new-bucket';
-
-    // Creates the new bucket
-    storage
-      .createBucket(bucketName)
-      .then(() => {
-        console.log(`Bucket ${bucketName} created.`);
-      })
-      .catch(err => {
-        console.error('ERROR:', err);
-      });
-
-Samples
--------
+{{#if samples.length}} ## Samples
 
 Samples are in the
-```samples/`` <https://github.com/googleapis/nodejs-storage/tree/master/samples>`__
+```samples/`` <https://github.com{{repoPath}}/tree/master/samples>`__
 directory. The samples’ ``README.md`` has instructions for running the
 samples.
 
-+-----------------------+-----------------------+-----------------------+
-| Sample                | Source Code           | Try it                |
-+=======================+=======================+=======================+
-| ACL (Access Control   | `source               | |Open in Cloud Shell| |
-| Lists)                | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/acl.js>`__    |                       |
-+-----------------------+-----------------------+-----------------------+
-| Buckets               | `source               | |Open in Cloud Shell| |
-|                       | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/buckets.js>`_ |                       |
-|                       | _                     |                       |
-+-----------------------+-----------------------+-----------------------+
-| Encryption            | `source               | |Open in Cloud Shell| |
-|                       | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/encryption.js |                       |
-|                       | >`__                  |                       |
-+-----------------------+-----------------------+-----------------------+
-| Files                 | `source               | |Open in Cloud Shell| |
-|                       | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/files.js>`__  |                       |
-+-----------------------+-----------------------+-----------------------+
-| Notifications         | `source               | |Open in Cloud Shell| |
-|                       | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/notifications |                       |
-|                       | .js>`__               |                       |
-+-----------------------+-----------------------+-----------------------+
-| Requester Pays        | `source               | |Open in Cloud Shell| |
-|                       | code <https://github. |                       |
-|                       | com/googleapis/nodejs |                       |
-|                       | -storage/blob/master/ |                       |
-|                       | samples/requesterPays |                       |
-|                       | .js>`__               |                       |
-+-----------------------+-----------------------+-----------------------+
++--------+-------------+--------+
+| Sample | Source Code | Try it |
++========+=============+========+
++--------+-------------+--------+
 
-The `Cloud Storage Node.js Client API
-Reference <https://cloud.google.com/nodejs/docs/reference/storage/latest/>`__
-documentation also contains samples.
+{{#each samples}} \| {{name}} \| `source
+code <https://github.com{{../repoPath}}/blob/master/samples/{{file}}>`__
+\| |Open in Cloud Shell| \| {{/each}} {{/if}}
+
+The `{{short_name}} {{display}} Client API
+Reference <{{client_reference_url}}>`__ documentation also
+contains samples.
 
 Versioning
 ----------
 
 This library follows `Semantic Versioning <http://semver.org/>`__.
 
-This library is considered to be **General Availability (GA)**. This
-means it is stable; the code surface will not change in
-backwards-incompatible ways unless absolutely necessary (e.g. because of
-critical security issues) or with an extensive deprecation period.
-Issues and requests against **GA** libraries are addressed with the
-highest priority.
+{{#if_eq release_quality ‘ga’}} This library is considered to be
+**General Availability (GA)**. This means it is stable; the code surface
+will not change in backwards-incompatible ways unless absolutely
+necessary (e.g. because of critical security issues) or with an
+extensive deprecation period. Issues and requests against **GA**
+libraries are addressed with the highest priority. {{/if_eq}} {{#if_eq
+release_quality ‘beta’}} This library is considered to be in **beta**.
+This means it is expected to be mostly stable while we work toward a
+general availability release; however, complete stability is not
+guaranteed. We will address issues and requests against beta libraries
+with a high priority. {{/if_eq}} {{#if_eq release_quality ‘alpha’}} This
+library is considered to be in **alpha**. This means it is still a
+work-in-progress and under active development. Any release is subject to
+backwards-incompatible changes at any time. {{/if_eq}} {{#if_eq
+release_quality ‘deprecated’}} This library is **deprecated**. This
+means that it is no longer being actively maintained and the only
+updates the library will receive will be for critical security issues.
+{{#if deprecated}}{{deprecated}}{{/if}} {{/if_eq}}
 
 More Information: `Google Cloud Platform Launch
 Stages <https://cloud.google.com/terms/launch-stages>`__
@@ -186,7 +153,7 @@ Contributing
 ------------
 
 Contributions welcome! See the `Contributing
-Guide <https://github.com/googleapis/nodejs-storage/blob/master/.github/CONTRIBUTING.md>`__.
+Guide <https://github.com{{repoPath}}/blob/master/.github/CONTRIBUTING.md>`__.
 
 License
 -------
@@ -194,37 +161,16 @@ License
 Apache Version 2.0
 
 See
-`LICENSE <https://github.com/googleapis/nodejs-storage/blob/master/LICENSE>`__
+`LICENSE <https://github.com{{repoPath}}/blob/master/LICENSE>`__
 
+.. 
 .. |release level| image:: https://img.shields.io/badge/release%20level-general%20availability%20%28GA%29-brightgreen.svg?style=flat
    :target: https://cloud.google.com/terms/launch-stages
-.. |CircleCI| image:: https://img.shields.io/circleci/project/github/googleapis/nodejs-storage.svg?style=flat
-   :target: https://circleci.com/gh/googleapis/nodejs-storage
-.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/github/googleapis/nodejs-storage?branch=master&svg=true
-   :target: https://ci.appveyor.com/project/googleapis/nodejs-storage
-.. |codecov| image:: https://img.shields.io/codecov/c/github/googleapis/nodejs-storage/master.svg?style=flat
-   :target: https://codecov.io/gh/googleapis/nodejs-storage
+.. |CircleCI| image:: https://img.shields.io/circleci/project/github{{repoPath}}.svg?style=flat
+   :target: https://circleci.com/gh{{repoPath}}
+.. |AppVeyor| image:: https://ci.appveyor.com/api/projects/status/github{{repoPath}}?branch=master&svg=true
+   :target: https://ci.appveyor.com/project{{repoPath}}
+.. |codecov| image:: https://img.shields.io/codecov/c/github{{repoPath}}/master.svg?style=flat
+   :target: https://codecov.io/gh{{repoPath}}
 .. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/acl.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/buckets.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/encryption.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/files.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/notifications.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/requesterPays.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/acl.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/buckets.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/encryption.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/files.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/notifications.js,samples/README.md
-.. |Open in Cloud Shell| image:: http://gstatic.com/cloudssh/images/open-btn.png
-   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-storage&page=editor&open_in_editor=samples/requesterPays.js,samples/README.md
+   :target: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com{{../repoPath}}&page=editor&open_in_editor=samples/{{file}},samples/README.md
