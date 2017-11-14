@@ -7,7 +7,7 @@ here |logo|
    :height: 96px
    :width: 96px
    :alt: Google Cloud Platform logo
-   :align: middle
+   :align: bottom
 
 |release level| |CircleCI| |AppVeyor| |codecov|
 
