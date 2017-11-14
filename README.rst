@@ -5,7 +5,8 @@
    :align: right
 
 `Google Cloud Storage: Node.js Client <https://github.com/googleapis/nodejs-storage>`__  |logo|
-======================================================================================= |logo|
+======================================================================================= 
+|logo|
 
 here |logo|
 
