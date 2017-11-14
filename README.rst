@@ -1,6 +1,8 @@
 `Google Cloud Storage: Node.js Client <https://github.com/googleapis/nodejs-storage>`__  |logo|
 =======================================================================================
 
+here |logo|
+
 .. |logo| image:: https://avatars2.githubusercontent.com/u/2810941?v=3&s=96
    :height: 96px
    :width: 96px
