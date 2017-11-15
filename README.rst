@@ -90,10 +90,11 @@ Using the client library
 {{/if}}
 
 {{#if samples.length}}
+
 Samples
 ~~~~~~~
 
-Samples are in the `samples\ <https://github.com{{repoPath}}/tree/master/samples>`_
+Samples are in the `samples\ <https://github.com{{repoPath}}/tree/master/samples>`__
 directory. The samples’ ``README.md`` has instructions for running the
 samples.
 
@@ -102,9 +103,13 @@ samples.
 +========+=============+========+
 +--------+-------------+--------+
 
-{{#each samples}} \| {{name}} \| `source
-code <https://github.com{{../repoPath}}/blob/master/samples/{{file}}>`__
-\| |Open in Cloud Shell| \| {{/each}} {{/if}}
+{{#each samples}} 
+\| {{name}} \| `source code`_ \| |Open in Cloud Shell| \|
+
+.. _source code: https://github.com{{../repoPath}}/blob/master/samples/{{file}}
+
+{{/each}} 
+{{/if}}
 
 The `{{short_name}} {{display}} Client API
 Reference <{{client_reference_url}}>`__ documentation also
@@ -115,24 +120,29 @@ Versioning
 
 This library follows `Semantic Versioning <http://semver.org/>`__.
 
-{{#if_eq release_quality ‘ga’}} This library is considered to be
+{{#if_eq release_quality ‘ga’}} 
+This library is considered to be
 **General Availability (GA)**. This means it is stable; the code surface
 will not change in backwards-incompatible ways unless absolutely
 necessary (e.g. because of critical security issues) or with an
 extensive deprecation period. Issues and requests against **GA**
-libraries are addressed with the highest priority. {{/if_eq}} {{#if_eq
-release_quality ‘beta’}} This library is considered to be in **beta**.
+libraries are addressed with the highest priority. 
+{{/if_eq}}
+{{#if_eq release_quality ‘beta’}}
+This library is considered to be in **beta**.
 This means it is expected to be mostly stable while we work toward a
 general availability release; however, complete stability is not
 guaranteed. We will address issues and requests against beta libraries
-with a high priority. {{/if_eq}} {{#if_eq release_quality ‘alpha’}} This
-library is considered to be in **alpha**. This means it is still a
+with a high priority.
+{{/if_eq}}
+{{#if_eq release_quality ‘alpha’}} 
+This library is considered to be in **alpha**. This means it is still a
 work-in-progress and under active development. Any release is subject to
-backwards-incompatible changes at any time. {{/if_eq}} {{#if_eq
-release_quality ‘deprecated’}} This library is **deprecated**. This
-means that it is no longer being actively maintained and the only
-updates the library will receive will be for critical security issues.
-{{#if deprecated}}{{deprecated}}{{/if}} {{/if_eq}}
+backwards-incompatible changes at any time. 
+{{/if_eq}}
+{{#if_eq release_quality ‘deprecated’}} This library is **deprecated**. This means that it is no longer being actively maintained and the only
+updates the library will receive will be for critical security issues.{{#if deprecated}}{{deprecated}}{{/if}} 
+{{/if_eq}}
 
 More Information: `Google Cloud Platform Launch
 Stages <https://cloud.google.com/terms/launch-stages>`__
