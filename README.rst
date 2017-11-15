@@ -39,7 +39,6 @@ Explained <https://cloud.google.com/apis/docs/client-libraries-explained>`__.
 {{#if samples.length}}
 -  `Samples <#samples>`__ 
 {{/if}}
-
 -  `Versioning <#versioning>`__
 -  `Contributing <#contributing>`__
 -  `License <#license>`__
@@ -78,22 +77,22 @@ can access the API from your local workstation.
 Installing the client library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
-
     {{lib_install_cmd}}
 
-{{#if quickstart}} ### Using the client library
+{{#if quickstart}}
+Using the client library
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: {{syntax_highlighting_ext}}
 
-    {{{quickstart}}}
-
+  {{{quickstart}}}
 {{/if}}
 
-{{#if samples.length}} ## Samples
+{{#if samples.length}}
+Samples
+~~~~~~~
 
-Samples are in the
-```samples/`` <https://github.com{{repoPath}}/tree/master/samples>`__
+Samples are in the `samples/ <https://github.com{{repoPath}}/tree/master/samples>`_
 directory. The samples’ ``README.md`` has instructions for running the
 samples.
 
