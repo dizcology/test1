@@ -80,6 +80,7 @@ Installing the client library
     {{lib_install_cmd}}
 
 {{#if quickstart}}
+
 Using the client library
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -92,7 +93,7 @@ Using the client library
 Samples
 ~~~~~~~
 
-Samples are in the `samples/ <https://github.com{{repoPath}}/tree/master/samples>`_
+Samples are in the ``samples/` <https://github.com{{repoPath}}/tree/master/samples>`_
 directory. The samples’ ``README.md`` has instructions for running the
 samples.
 
