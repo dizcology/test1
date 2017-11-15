@@ -52,7 +52,7 @@ Before you begin
 
 1. Select or create a Cloud Platform project.
 
-  `Go to the projects page`_
+  `Go to the projects page <https://console.cloud.google.com/project>`_
 
 {{#unless suppress_billing}}
 1. Enable billing for your project.
@@ -60,32 +60,18 @@ Before you begin
   `Enable billing`_
 {{/if}}
 
-{{#if api_id}} 1. Enable the {{name}} API.
+{{#if api_id}}
+1. Enable the {{name}} API.
 
-  `Enable the API`_
+  `Enable the API <https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}>`_
 {{/if}}
 
-1. [Set up authentication with a service account][auth] so you
+1. `Set up authentication with a service account <https://cloud.google.com/docs/authentication/getting-started>`_ so you
 can access the API from your local workstation.
 
-{{#unless suppress_billing}} [billing]:
-https://support.google.com/cloud/answer/6293499#enable-billing
-{{/unless}} [enable_api]:
-https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}
-[auth]: https://cloud.google.com/docs/authentication/getting-started
 
-.. _Go to the projects page:
-.. _projects: https://console.cloud.google.com/project
+.. _Enable billing: https://support.google.com/cloud/answer/6293499#enable-billing
 
-{{#unless suppress_billing}}
-.. _Enable billing:
-.. _billing: https://support.google.com/cloud/answer/6293499#enable-billing
-{{/unless}}
-
-.. _Enable the API:
-.. _enable_api: https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}
-
-[auth]: https://cloud.google.com/docs/authentication/getting-started
 
 Installing the client library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
