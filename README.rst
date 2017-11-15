@@ -52,7 +52,7 @@ Before you begin
 
 1. Select or create a Cloud Platform project.
 
-  `Go to the projects page <https://console.cloud.google.com/project>`_
+  `Go to the projects page`_
 
 {{#unless suppress_billing}}
 1. Enable billing for your project.
@@ -63,14 +63,16 @@ Before you begin
 {{#if api_id}}
 1. Enable the {{name}} API.
 
-  `Enable the API <https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}>`_
+  `Enable the API`_
 {{/if}}
 
-1. `Set up authentication with a service account <https://cloud.google.com/docs/authentication/getting-started>`_ so you
+1. `Set up authentication with a service account`_ so you
 can access the API from your local workstation.
 
-
+.. _Go to the projects page: https://console.cloud.google.com/project
 .. _Enable billing: https://support.google.com/cloud/answer/6293499#enable-billing
+.. _Enable the API: https://console.cloud.google.com/flows/enableapi?apiid={{api_id}}
+.. _Set up authentication with a service account: https://cloud.google.com/docs/authentication/getting-started
 
 
 Installing the client library
@@ -149,7 +151,7 @@ Apache Version 2.0
 See
 `LICENSE <https://github.com{{repoPath}}/blob/master/LICENSE>`__
 
-.. 
+
 .. |release level| image:: https://img.shields.io/badge/release%20level-general%20availability%20%28GA%29-brightgreen.svg?style=flat
    :target: https://cloud.google.com/terms/launch-stages
 .. |CircleCI| image:: https://img.shields.io/circleci/project/github{{repoPath}}.svg?style=flat
